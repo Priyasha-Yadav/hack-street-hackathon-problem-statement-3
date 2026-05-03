@@ -82,16 +82,6 @@ export default function SponsorsSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="mt-10 sm:mt-16 text-center">
-          <a href="#" className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full glass text-xs sm:text-sm font-medium text-white/70 hover:text-white hover:bg-white/[0.08] transition-all duration-300">
-            <span>Interested in sponsoring?</span>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </section>
   );

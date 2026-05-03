@@ -36,116 +36,101 @@ const GIF_TECH = "/gif-tech.gif";
 /* ─── ID CARD COMPONENT ─── */
 function IdCard({ form, participantId, cardRef }) {
   const trackLabel = TRACKS.find((t) => t.id === form.track)?.label || "Open";
+  const initial = form.fullName?.trim()?.[0]?.toUpperCase() || "V";
 
   return (
     <div
       ref={cardRef}
-      className="relative w-full max-w-[560px] mx-auto rounded-2xl overflow-hidden select-none"
+      className="relative w-full max-w-[600px] mx-auto rounded-2xl overflow-hidden select-none"
       style={{
-        aspectRatio: "16 / 10",
-        background: "linear-gradient(135deg, #0a0f1a 0%, #0d1526 40%, #111b2e 100%)",
+        aspectRatio: "16 / 9",
+        background: "linear-gradient(145deg, #080c14 0%, #0c1220 35%, #0f172a 70%, #0a1628 100%)",
       }}
     >
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+      {/* Grid pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+          backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
       />
 
-        <img
-          src={GIF_TECH}
-          alt=""
-          crossOrigin="anonymous"
-          className="absolute bottom-3 left-3 w-14 h-14 sm:w-18 sm:h-18 rounded-xl object-cover opacity-60 pointer-events-none"
-        />
-        
-      {/* Glow orbs */}
-      <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-[#3B82F6]/15 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-[#3B82F6]/8 blur-3xl pointer-events-none" />
+      {/* Glow accents */}
+      <div className="absolute -top-24 right-10 w-56 h-56 rounded-full bg-[#3B82F6]/10 blur-[80px] pointer-events-none" />
+      <div className="absolute -bottom-20 left-10 w-44 h-44 rounded-full bg-[#3B82F6]/6 blur-[60px] pointer-events-none" />
 
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#3B82F6] to-transparent" />
-
+      {/* Top accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-[2px]"
+        style={{ background: "linear-gradient(90deg, transparent 5%, #3B82F6 30%, #60A5FA 50%, #3B82F6 70%, transparent 95%)" }}
+      />
+      {/* Left accent line */}
+      <div className="absolute top-0 left-0 w-[2px] h-full"
+        style={{ background: "linear-gradient(180deg, #3B82F6 0%, transparent 40%)" }}
+      />
 
       {/* Content */}
-      <div className="relative h-full flex flex-col justify-between p-5 sm:p-7">
-        {/* Header Row */}
+      <div className="relative h-full flex flex-col justify-between p-5 sm:p-6 md:p-7">
+
+        {/* TOP: Brand + ID */}
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#3B82F6] flex items-center justify-center">
-              <span className="text-white font-bold text-sm">V</span>
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-md bg-[#3B82F6] flex items-center justify-center">
+              <span className="text-white font-bold text-xs">V</span>
             </div>
-            <div>
-              <span className="text-white font-bold text-sm tracking-tight block leading-none">
-                VELOX 2026
-              </span>
-              <span className="text-white/30 text-[9px] font-mono tracking-widest uppercase">
-                Hackathon
-              </span>
+            <div className="leading-none">
+              <span className="text-white font-bold text-xs tracking-tight block">VELOX 2026</span>
+              <span className="text-white/20 text-[8px] font-mono tracking-[0.2em] uppercase">Hackathon Participant</span>
             </div>
           </div>
-          <div className="text-right mr-20 sm:mr-24">
-            <span className="text-[9px] font-mono text-white/25 uppercase tracking-wider block">
-              Participant ID
-            </span>
-            <span className="text-sm font-mono font-bold text-[#3B82F6]">
-              {participantId}
-            </span>
+          <div className="text-right">
+            <span className="text-[7px] font-mono text-white/20 uppercase tracking-widest block mb-0.5">ID</span>
+            <span className="text-xs font-mono font-bold text-[#3B82F6] tracking-wide">{participantId}</span>
           </div>
         </div>
 
-        {/* Main Info */}
-        <div>
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-0.5 truncate">
-            {form.fullName || "Your Name"}
-          </h3>
-          <p className="text-xs text-white/35 font-mono truncate">
-            {form.github ? `github.com/${form.github.replace("@", "")}` : form.email || "email@example.com"}
-          </p>
-        </div>
-
-
-        {/* Bottom Row */}
-        <div className="flex items-end justify-between gap-4">
-          <div className="flex gap-4 sm:gap-6 min-w-0 ml-16 sm:ml-20">
-            <div className="min-w-0">
-              <span className="text-[8px] font-mono text-white/25 uppercase tracking-widest block">
-                Track
-              </span>
-              <span className="text-xs font-semibold text-white/80 truncate block">
-                {trackLabel}
-              </span>
-            </div>
-            <div>
-              <span className="text-[8px] font-mono text-white/25 uppercase tracking-widest block">
-                Level
-              </span>
-              <span className="text-xs font-semibold text-white/80">
-                {form.experience || "—"}
-              </span>
-            </div>
-            <div>
-              <span className="text-[8px] font-mono text-white/25 uppercase tracking-widest block">
-                Mode
-              </span>
-              <span className="text-xs font-semibold text-white/80">
-                {form.teamPref === "team" ? "Team" : "Solo"}
-              </span>
-            </div>
+        {/* CENTER: Avatar + Name + GIFs */}
+        <div className="flex items-center gap-4 sm:gap-5 py-1">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#1d4ed8] flex items-center justify-center shrink-0 ring-2 ring-white/5">
+            <span className="text-white font-bold text-lg sm:text-xl">{initial}</span>
           </div>
 
-          {/* Date badge */}
-          <div className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/8 shrink-0">
-            <span className="text-[9px] font-mono text-white/40 block text-center leading-none">
-              JUL 15–17
-            </span>
-            <span className="text-[8px] font-mono text-white/25 block text-center">
-              2026
-            </span>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight truncate leading-tight">
+              {form.fullName || "Your Name"}
+            </h3>
+            <p className="text-[10px] sm:text-xs text-white/30 font-mono truncate mt-0.5">
+              {form.github ? `github.com/${form.github.replace("@", "")}` : form.email || "email@example.com"}
+            </p>
+          </div>
+          <img src={GIF_TECH} alt="" className="w-20 h-20 sm:w-16 sm:h- rounded-xl object-cover shrink-0 hidden sm:block" />        </div>
+
+        {/* BOTTOM: Details + Date */}
+        <div className="flex items-end justify-between">
+          <div className="flex gap-5 sm:gap-8">
+            {[
+              { label: "Track", value: trackLabel },
+              { label: "Level", value: form.experience || "—" },
+              { label: "Mode", value: form.teamPref === "team" ? "Team" : "Solo" },
+            ].map((item) => (
+              <div key={item.label}>
+                <span className="text-[7px] sm:text-[8px] font-mono text-white/20 uppercase tracking-[0.15em] block">{item.label}</span>
+                <span className="text-[10px] sm:text-xs font-semibold text-white/70 block mt-0.5">{item.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="px-2.5 py-1.5 rounded-md bg-white/[0.03] border border-white/[0.06]">
+              <span className="text-[8px] font-mono text-white/35 block text-center leading-tight">JUL 15–17</span>
+              <span className="text-[7px] font-mono text-white/20 block text-center">2026</span>
+            </div>
+            <div className="w-10 h-10 rounded-md bg-white/[0.03] border border-white/[0.06] p-1.5 hidden sm:block">
+              <div className="w-full h-full grid grid-cols-3 grid-rows-3 gap-[1px]">
+                {[1, 0, 1, 0, 1, 0, 1, 0, 1].map((on, i) => (
+                  <div key={i} className={`rounded-[1px] ${on ? "bg-white/20" : "bg-transparent"}`} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -291,10 +276,10 @@ export default function RegistrationSection() {
                     <button
                       onClick={() => { if (s.id < step) setStep(s.id); }}
                       className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium transition-all duration-300 cursor-pointer ${step === s.id
-                          ? "bg-[#3B82F6] text-white"
-                          : step > s.id
-                            ? "bg-white/10 text-white/70"
-                            : "bg-white/5 text-white/30"
+                        ? "bg-[#3B82F6] text-white"
+                        : step > s.id
+                          ? "bg-white/10 text-white/70"
+                          : "bg-white/5 text-white/30"
                         }`}
                     >
                       <span className="font-mono">{String(s.id).padStart(2, "0")}</span>
