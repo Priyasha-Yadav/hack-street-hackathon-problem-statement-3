@@ -6,6 +6,8 @@ import PrizesSection from "@/components/PrizesSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import RegistrationSection from "@/components/RegistrationSection";
+import FeedbackSection from "@/components/FeedbackSection";
+import StringAnimation from "@/components/StringAnimation";
 import Footer from "@/components/Footer";
 
 export default function App() {
@@ -54,6 +56,12 @@ export default function App() {
 
       {/* REGISTRATION */}
       <RegistrationSection />
+
+      {/* INTERACTIVE STRING ANIMATION */}
+      <StringAnimation />
+
+      {/* FEEDBACK */}
+      <FeedbackSection />
 
       {/* FOOTER */}
       <Footer />
