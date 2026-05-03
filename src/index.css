@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ===== VELOX DESIGN SYSTEM ===== */
+
+@theme {
+  --color-velox-bg: #050505;
+  --color-velox-surface: #0a0a0a;
+  --color-velox-card: #111111;
+  --color-velox-border: rgba(255, 255, 255, 0.08);
+  --color-velox-text: #f0f0f0;
+  --color-velox-muted: rgba(255, 255, 255, 0.5);
+  --color-velox-accent: #3B82F6;
+  --color-velox-accent-glow: rgba(59, 130, 246, 0.4);
+  --color-velox-cyan: #06D6A0;
+  --color-velox-blue: #3B82F6;
+  --color-velox-pink: #F472B6;
+  --color-velox-amber: #F59E0B;
+  --color-velox-gold: #FFD700;
+  --color-velox-silver: #C0C0C0;
+  --color-velox-bronze: #CD7F32;
+}
+
+/* ===== BASE RESET & GLOBAL STYLES ===== */
+
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--color-velox-bg);
+  color: var(--color-velox-text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.4);
+  color: #fff;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== GLASSMORPHISM UTILITY ===== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ===== GLOW EFFECTS ===== */
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 0 80px rgba(59, 130, 246, 0.08);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(6, 214, 160, 0.15), 0 0 80px rgba(6, 214, 160, 0.08);
+}
+
+.glow-amber {
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.2), 0 0 80px rgba(245, 158, 11, 0.1);
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* ===== SECTION DIVIDER ===== */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+}
+
+/* ===== FONT OVERRIDES ===== */
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* ===== GRID PATTERN BG ===== */
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ===== RADIAL GRADIENT BG ===== */
+
+.radial-glow {
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.12), transparent);
+}
+
+.radial-glow-bottom {
+  background: radial-gradient(ellipse 80% 50% at 50% 120%, rgba(59, 130, 246, 0.08), transparent);
+}
+
+/* ===== SCROLLBAR HIDE ===== */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
