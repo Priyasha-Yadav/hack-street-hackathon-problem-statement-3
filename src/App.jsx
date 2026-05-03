@@ -1,4 +1,5 @@
 import Hero from "@/components/ui/particle-effect-for-hero";
+import Navbar from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
 import TimelineSection from "@/components/TimelineSection";
 import PrizesSection from "@/components/PrizesSection";
@@ -10,6 +11,9 @@ import Footer from "@/components/Footer";
 export default function App() {
   return (
     <div className="w-full bg-[#050505] min-h-screen">
+      {/* STICKY NAVBAR */}
+      <Navbar />
+
       {/* HERO SECTION */}
       <section className="relative h-screen">
         <Hero />

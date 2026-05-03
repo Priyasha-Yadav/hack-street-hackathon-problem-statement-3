@@ -339,25 +339,7 @@ const AntiGravityCanvas: React.FC = () => {
   );
 };
 
-const Navigation: React.FC = () => {
-  return (
-    <nav className="absolute top-0 left-0 w-full z-20 flex items-center p-6 md:p-8">
-      <div className="flex items-center space-x-2">
-        <div className="w-8 h-8 bg-gradient-to-br from-[#000] to-[#3B82F6] rounded-lg flex items-center justify-center">
-          <span className="font-bold text-white text-lg">V</span>
-        </div>
-        <span className="text-white font-bold tracking-tight text-lg">VELOX</span>
-      </div>
-      <div className="hidden md:flex space-x-8 text-sm font-medium text-white/70 ml-auto">
-        <a href="#about" className="hover:text-white transition-colors">About</a>
-        <a href="#timeline" className="hover:text-white transition-colors">Timeline</a>
-        <a href="#prizes" className="hover:text-white transition-colors">Prizes</a>
-        <a href="#faqs" className="hover:text-white transition-colors">FAQs</a>
-        <a href="#register" className="hover:text-white transition-colors">Register</a>
-      </div>
-    </nav>
-  )
-}
+
 
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -479,7 +461,6 @@ export default function App() {
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden selection:bg-blue-500 selection:text-white">
       <AntiGravityCanvas />
-      <Navigation />
       <HeroContent />
     </div>
   );
